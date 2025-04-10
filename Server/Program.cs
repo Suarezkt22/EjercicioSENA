@@ -21,7 +21,7 @@ builder.Services.AddCors(options =>
         .WithOrigins("http://localhost:5001")
        ));
 
-builder.Services.AddServices(configuration);
+builder.Services.AddServices();
 
 builder.Services.AddLogging();
 
@@ -32,7 +32,6 @@ builder.Logging.AddConsole();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

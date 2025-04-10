@@ -7,7 +7,7 @@ namespace PruebaTecnicaAmaris;
 
 public static class DependencyContainer
 {
-    public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddCarter();
 

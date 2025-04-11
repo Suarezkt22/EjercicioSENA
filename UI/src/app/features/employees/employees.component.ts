@@ -28,7 +28,6 @@ export class EmployeesComponent implements OnInit {
   /** View state indicators */
   public isLoading: boolean = false;
   public searchButtonEnable: boolean = true;
-  public isFilteredSearch: boolean = false;
   public isModalVisible: boolean = false;
 
   /** Modal configuration */
@@ -102,7 +101,6 @@ export class EmployeesComponent implements OnInit {
       this.startLoading();
       const employeeFetched = await this.fetchEmployeeById(id);
       this.employees = [this.mapEmployeeFromAPI(employeeFetched.data)];
-      this.setFilteredSearch();
     } finally {
       this.finishLoading();
     }
@@ -111,7 +109,6 @@ export class EmployeesComponent implements OnInit {
   /** Clears filters and reloads employees */
   public clean(): void {
     this.loadEmployees();
-    this.resetFilteredSearch();
     this.employeesGridForm.reset();
   }
 
@@ -163,16 +160,6 @@ export class EmployeesComponent implements OnInit {
   private finishLoading(): void {
     this.searchButtonEnable = true;
     this.isLoading = false;
-  }
-
-  private setFilteredSearch(): void {
-    this.searchButtonEnable = false;
-    this.isFilteredSearch = true;
-  }
-
-  private resetFilteredSearch(): void {
-    this.searchButtonEnable = true;
-    this.isFilteredSearch = false;
   }
 
   private displayModal(type: ModalTypes, message: string): void {

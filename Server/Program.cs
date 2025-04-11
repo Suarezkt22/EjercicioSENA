@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
         config
         .AllowAnyHeader()
         .WithMethods("GET")
-        .WithOrigins("http://localhost:5001")
+        .WithOrigins("http://localhost:4200")
        ));
 
 builder.Services.AddServices();

@@ -16,7 +16,7 @@ public class EmployeeController(EmployeeService employeeService) : CarterModule
             return Results.Ok(result);
         });
 
-        app.MapGet($"{EmployeeControllerTags.ApiBaseRoute}/{EmployeeControllerTags.Tag}/{{id}}", async (int id) =>
+        app.MapGet($"{EmployeeControllerTags.ApiBaseRoute}/{EmployeeControllerTags.Tag}/one/{{id}}", async (int id) =>
         {
             var result = await _employeeService.GetById(id);
             return Results.Ok(result);

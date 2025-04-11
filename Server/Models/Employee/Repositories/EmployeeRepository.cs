@@ -11,7 +11,7 @@ public class EmployeeRepository(EmployeeAPIConfigClient configClient) : IEmploye
 
     public async Task<List<Employee>> GetAll()
     {
-        await Task.Delay(30000); // Api very restrictive with 429 too many requests
+        await Task.Delay(60000); // Api very restrictive with 429 too many requests
 
         var response = await APIClient.ExecuteAsync<ApiEmployeeWrapper<List<APIEmployeeDTO>>>(
             _configClient.BaseUrl,
@@ -26,7 +26,7 @@ public class EmployeeRepository(EmployeeAPIConfigClient configClient) : IEmploye
 
     public async Task<Employee?> GetById(int id)
     {
-        await Task.Delay(30000); // Api very restrictive with 429 too many requests
+        await Task.Delay(60000); // Api very restrictive with 429 too many requests
         
         var response = await APIClient.ExecuteAsync<ApiEmployeeWrapper<APIEmployeeDTO>>(
             _configClient.BaseUrl,

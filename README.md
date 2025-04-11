@@ -26,7 +26,7 @@ Este proyecto incluye una aplicación desarrollada en **.NET** para el backend s
 1. **Restaurar dependencias**:
    - Navega a la carpeta del backend:
      ```bash
-     cd /Server
+     cd /Server/PruebaTecnicaAmaris
      ```
    - Ejecuta:
      ```bash
@@ -78,10 +78,17 @@ Este proyecto incluye una aplicación desarrollada en **.NET** para el backend s
 ## Pruebas
 
 1. **Pruebas unitaria del backend**:
+    - Navega a la carpeta del backend:
+     ```bash
+     cd /Server/PruebaTecnicaAmaris.Tests
+     ```
+
    - Ejecuta las pruebas:
      ```bash
      dotnet test
      ```
+
+      
 
 2. **Pruebas unitaria del frontend**:
    - Ejecuta las pruebas:

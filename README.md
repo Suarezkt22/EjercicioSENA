@@ -47,7 +47,7 @@ Este proyecto incluye una aplicación desarrollada en **.NET** para el backend s
 1. **Instalar dependencias**:
    - Navega a la carpeta del frontend:
      ```bash
-     cd /ruta-al-proyecto-frontend
+     cd /UI
      ```
    - Ejecuta:
      ```bash

@@ -15,6 +15,5 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideHttpClient() , 
     {provide: EMPLOYEE_SERVICE, useClass: APIEmployeeService}, provideAnimationsAsync(),
-    importProvidersFrom(MatInputModule, MatFormFieldModule, MatButtonModule)
   ]
 };

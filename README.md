@@ -1,97 +1,86 @@
-# PruebaTecnicaInterrapidisimo [Employee Service]
+# Prueba Técnica: Aplicación Web para Registro de Estudiantes
 
-Este proyecto incluye una aplicación desarrollada en **.NET** para el backend siguiendo la arquitectura de MVC y **Angular** para el frontend. A continuación, encontrarás las instrucciones necesarias para ejecutar y probar el proyecto.
+Este proyecto implementa una solución basada en principios de DDD (Domain-Driven Design) con CQRS (Command Query Responsibility Segregation) y Arquitectura Hexagonal. Se sigue un enfoque de **Vertical Slicing** para dividir las funcionalidades. La aplicación consta de un backend desarrollado en .NET y un frontend en Angular.
 
----
+## Requisitos
 
-## Requisitos Previos
+- **Backend**: .NET 6+
+- **Frontend**: Angular 15+
+- **Base de Datos**: SQL Server
+- **Node.js**: 16+
+- **Gestor de Paquetes**: npm o yarn
 
-1. **Software necesario**:
-   - [.NET 8 SDK o superior](https://dotnet.microsoft.com/download).
-   - [Node.js (LTS)](https://nodejs.org/).
-   - [Angular CLI](https://angular.io/guide/setup-local):
-     ```bash
-     npm install -g @angular/cli
-     ```
-     
-2. **Herramientas recomendadas**:
-   - Editor de texto: [Visual Studio Code](https://code.visualstudio.com/) o [Visual Studio](https://visualstudio.microsoft.com/es/).
+## Características
 
----
+1. **CRUD para estudiantes**: Permite registrar, actualizar y eliminar estudiantes.
+2. **Sistema de Créditos**: Los estudiantes pueden inscribirse en un programa de créditos.
+3. **Restricciones**:
 
-## Configuración del Proyecto
+   - Cada materia tiene 3 créditos.
+   - Un estudiante solo puede seleccionar 3 materias.
+   - Las materias están distribuidas entre 5 profesores, y cada uno dicta 2 materias.
+   - No es posible tener clases con el mismo profesor en más de una materia.
 
-### Backend (.NET)
+4. **Visualización de registros**:
 
-1. **Restaurar dependencias**:
-   - Navega a la carpeta del backend:
-     ```bash
-     cd /Server/PruebaTecnicaInterrapidisimo
-     ```
-   - Ejecuta:
-     ```bash
-     dotnet restore
-     ```
+   - Los estudiantes pueden ver los registros de otros.
+   - Pueden ver los nombres de los alumnos que comparten clase.
 
-2. **Ejecutar el proyecto**:
-   - Inicia el backend:
-     ```bash
-     dotnet run
-     ```
-   - El backend estará disponible en: `http://localhost:5270`.
+## Configuración de la Base de Datos
 
----
+1. Ubica el script de SQL adjunto en la raíz del proyecto.
+2. Usa tu gestor de base de datos favorito (SSMS, Azure Data Studio, etc.) para ejecutar el script y crear las tablas necesarias y registros necesarios.
 
-### Frontend (Angular)
+## Instalación
 
-1. **Instalar dependencias**:
-   - Navega a la carpeta del frontend:
-     ```bash
-     cd /UI
-     ```
-   - Ejecuta:
-     ```bash
-     npm install
-     ```
+### Backend Server\PruebaTecnicaInterrapidisimo
 
-2. **Ejecutar el servidor de desarrollo**:
-   - Inicia el servidor Angular:
-     ```bash
-     ng serve
-     ```
-   - Accede a la aplicación en: [http://localhost:4200].
+1. Restaura los paquetes:
 
----
+   ```bash
+   dotnet restore
+   ```
 
-## Funcionalidades
+2. Inicia el servidor:
 
-- **Backend**:
-  - Endpoints disponibles para las funcionalidades del proyecto.
-  - Documentación de la API (Swagger) en: [http://localhost:5270/].
+   ```bash
+   dotnet run --urls http://localhost:5270
+   ```
 
-- **Frontend**:
-  - Interfaz de usuario desarrollada en Angular.
-  - Consumo de servicios REST para interacción con el backend.
+3. Documentacion de la API
 
----
+   ```bash
+   http://localhost:5270/swagger
+   ```
 
-## Pruebas
+### Frontend \UI
 
-1. **Pruebas unitaria del backend**:
-    - Navega a la carpeta del backend:
-     ```bash
-     cd /Server/PruebaTecnicaInterrapidisimo.Tests
-     ```
+1. Instala las dependencias:
 
-   - Ejecuta las pruebas:
-     ```bash
-     dotnet test
-     ```
+   ```bash
+   npm install
+   ```
 
-      
+2. Inicia el servidor de desarrollo:
 
-2. **Pruebas unitaria del frontend**:
-   - Ejecuta las pruebas:
-     ```bash
-     ng test
-     ```
+   ```bash
+   ng serve --open
+   ```
+
+## Uso
+
+- El backend estará disponible en `http://localhost:5270`.
+- El frontend estará disponible en `http://localhost:4200`.
+
+
+## Arquitectura del Proyecto
+
+- **DDD**: Separación en capas de dominio, aplicación e infraestructura.
+- **CQRS**: Comandos y consultas están claramente separados.
+- **Hexagonal**: Uso de puertos y adaptadores para facilitar el testing y la extensión.
+- **Vertical Slicing**: Cada funcionalidad está encapsulada y desacoplada del resto.
+
+## Licencia
+
+Este proyecto es únicamente para fines evaluativos.
+

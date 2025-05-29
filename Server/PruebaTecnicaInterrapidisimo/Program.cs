@@ -17,8 +17,6 @@ var configuration = builder.Configuration
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(config =>
         config
-        .AllowAnyHeader()
-        .WithMethods("GET")
         .WithOrigins("http://localhost:4200")
        ));
 

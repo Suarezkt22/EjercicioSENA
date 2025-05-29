@@ -7,6 +7,11 @@ namespace PruebaTecnicaInterrapidisimo.Infraestructure.Repositories;
 
 public class ProgramRepository(DbReadContext _readContext) : IProgramRepository
 {
+    public async Task<List<DomainProgram>> GetAll(CancellationToken cancellationToken)
+    {
+        return await _readContext.Programs.ToListAsync(cancellationToken);
+    }
+
     public async Task<DomainProgram?> GetById(int id, CancellationToken cancellationToken)
     {
         return await _readContext.Programs.Include(x => x.Courses)

@@ -1,6 +1,6 @@
 namespace PruebaTecnicaInterrapidisimo.Application.Features.Students.V1.DTOs;
 
-public record struct GetCoursesPerProgramResponse
+public record struct GetCoursesResponse
 {
     public int CourseId { get; set; }
     public string Name { get; set; }

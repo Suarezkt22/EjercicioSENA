@@ -2,22 +2,21 @@ using MediatR;
 using PruebaTecnicaInterrapidisimo.Application.Features.Students.V1.DTOs;
 using PruebaTecnicaInterrapidisimo.Common.Exceptions;
 using PruebaTecnicaInterrapidisimo.Common.Wrappers;
+using PruebaTecnicaInterrapidisimo.Domain.Aggregates;
 using PruebaTecnicaInterrapidisimo.Domain.Contracts;
 using PruebaTecnicaInterrapidisimo.Domain.Entities;
 using DomainProgram = PruebaTecnicaInterrapidisimo.Domain.Entities.Program;
 
 namespace PruebaTecnicaInterrapidisimo.Application.Features.Students.V1.Queries.Handlers;
 
-public class GetCoursesPerProgramQueryHandler(ICourseRepository _courseRepository, IProgramRepository _programRepository)
-    : IRequestHandler<GetCoursesPerProgramQuery, Response<List<GetCoursesResponse>>>
+public class GetEnrolledCoursesQueryHandler(IStudentRepository _studentRepository)
+    : IRequestHandler<GetEnrolledCoursesQuery, Response<List<GetCoursesResponse>>>
 {
-    public async Task<Response<List<GetCoursesResponse>>> Handle(GetCoursesPerProgramQuery request, CancellationToken cancellationToken)
+    public async Task<Response<List<GetCoursesResponse>>> Handle(GetEnrolledCoursesQuery request, CancellationToken cancellationToken)
     {
-        var program = await GetProgramAsync(request.ProgramId, cancellationToken);
+        var student = await GetStudentAsync(request.StudentId, cancellationToken);
 
-        var courses = await _courseRepository.GetByProgram(program, cancellationToken);
-
-        var response = GetCoursesPerProgramResponse(courses);
+        var response = GetCoursesPerProgramResponse([.. student.EnrolledCourses]);
 
         return new Response<List<GetCoursesResponse>>(response);
     }
@@ -40,10 +39,10 @@ public class GetCoursesPerProgramQueryHandler(ICourseRepository _courseRepositor
             })];
     }
 
-    private async Task<DomainProgram> GetProgramAsync(int programId, CancellationToken cancellationToken)
+    private async Task<Student> GetStudentAsync(int studentId, CancellationToken cancellationToken)
     {
-        return await _programRepository.GetById(programId, cancellationToken) ??
-        throw new GeneralException($"El programa indicado no existe.");
+        return await _studentRepository.GetById(studentId, cancellationToken)
+            ?? throw new GeneralException($"El estudiante indicado no existe.");
     }
 
 }

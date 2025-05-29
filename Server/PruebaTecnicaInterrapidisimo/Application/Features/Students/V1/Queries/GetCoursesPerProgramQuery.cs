@@ -4,4 +4,4 @@ using PruebaTecnicaInterrapidisimo.Common.Wrappers;
 
 namespace PruebaTecnicaInterrapidisimo.Application.Features.Students.V1.Queries;
 
-public record struct GetCoursesPerProgramQuery(int ProgramId) : IRequest<Response<List<GetCoursesPerProgramResponse>>>;
+public record struct GetCoursesPerProgramQuery(int ProgramId) : IRequest<Response<List<GetCoursesResponse>>>;

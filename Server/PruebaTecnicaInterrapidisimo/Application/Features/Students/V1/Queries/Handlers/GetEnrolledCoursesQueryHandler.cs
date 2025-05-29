@@ -29,8 +29,9 @@ public class GetEnrolledCoursesQueryHandler(IStudentRepository _studentRepositor
             {
                 CourseId = course.Id,
                 Name = course.Name,
+                Credits = course.Credits,
                 Teacher = course.Teacher != null
-                    ? new TeacherDTO
+                    ? new TeacherDto
                     {
                         TeacherId = course.Teacher.Id,
                         Name = course.Teacher.Name

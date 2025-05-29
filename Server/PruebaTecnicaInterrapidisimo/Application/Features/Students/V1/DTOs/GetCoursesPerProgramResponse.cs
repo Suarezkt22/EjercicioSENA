@@ -4,11 +4,12 @@ public record struct GetCoursesResponse
 {
     public int CourseId { get; set; }
     public string Name { get; set; }
-    public TeacherDTO? Teacher { get; set; }
+    public int Credits { get; set; }
+    public TeacherDto? Teacher { get; set; }
 
 }
 
-public record struct TeacherDTO
+public record struct TeacherDto
 {
     public int TeacherId { get; set; }
     public string Name { get; set; }

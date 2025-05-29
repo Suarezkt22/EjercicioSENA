@@ -10,7 +10,7 @@ public class GetEnrolledCoursesEndpoint : CarterModule
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet($"{ApiTags.ApiBaseRoute}/{ApiTags.StudentsTag}/enrolled-courses/{{studentId}}", async (
+        app.MapGet($"{ApiTags.ApiBaseRoute}/{ApiTags.StudentsTag}/enrolled-courses", async (
             [FromQuery] int studentId,
             ISender sender) =>
         { 

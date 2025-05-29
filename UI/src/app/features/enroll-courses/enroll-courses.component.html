@@ -1,0 +1,71 @@
+<div class="container py-4">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h2 class="mb-0">Inscripción de Materias</h2>
+    </div>
+    
+    <div class="card-body">
+      <form [formGroup]="enrollForm" (ngSubmit)="onSubmit()">
+        <p class="text-muted mb-4">Seleccione máximo 3 materias (no puede seleccionar materias con el mismo profesor):</p>
+        
+        <div class="row g-3">
+          <div *ngFor="let course of courses" class="col-md-6 col-lg-4 d-flex">
+            <label class="course-card w-100">
+              <input 
+                type="checkbox" 
+                class="visually-hidden"
+                [value]="course.courseId" 
+                (change)="onCheckboxChange($event, course.courseId)"
+                [checked]="enrollForm.controls.courses.value.includes(course.courseId)"
+                [disabled]="isCourseDisabled(course)">
+              
+              <div class="card h-100" 
+                   [class.border-primary]="enrollForm.controls.courses.value.includes(course.courseId)"
+                   [class.selected]="enrollForm.controls.courses.value.includes(course.courseId)"
+                   [class.disabled-teacher]="isTeacherDisabled(course)">
+                <div class="card-body d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="card-title mb-0 flex-grow-1 pe-2">{{course.name}}</h5>
+                    <span class="badge bg-primary rounded-pill flex-shrink-0">{{course.credits}} créditos</span>
+                  </div>
+                  
+                  <div class="text-muted small mt-auto mb-2">
+                    <i class="bi bi-person-fill me-1"></i> {{course.teacher?.name}}
+                    <span *ngIf="isTeacherDisabled(course)" class="text-danger ms-2">
+                      (Profesor ya seleccionado)
+                    </span>
+                  </div>
+                  
+                  <div *ngIf="enrollForm.controls.courses.value.includes(course.courseId)" class="selection-indicator mt-auto pt-2">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    <span class="text-success">Seleccionada</span>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+        
+        <!-- Mensajes de validación -->
+        <div *ngIf="enrollForm.controls.courses.invalid && (enrollForm.controls.courses.touched || enrollForm.controls.courses.dirty)" 
+             class="alert alert-danger mt-4">
+          <div *ngIf="enrollForm.controls.courses.errors?.['required']">
+            <i class="bi bi-exclamation-circle me-2"></i>Debe seleccionar al menos una materia
+          </div>
+          <div *ngIf="enrollForm.controls.courses.errors?.['maxlength']">
+            <i class="bi bi-exclamation-circle me-2"></i>Máximo 3 materias permitidas
+          </div>
+          <div *ngIf="enrollForm.controls.courses.errors?.['sameTeacher']">
+            <i class="bi bi-exclamation-circle me-2"></i>No puede seleccionar materias con el mismo profesor
+          </div>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+          <button type="submit" class="btn btn-primary px-4" [disabled]="enrollForm.invalid">
+            <i class="bi bi-save me-2"></i>Inscribir Materias
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

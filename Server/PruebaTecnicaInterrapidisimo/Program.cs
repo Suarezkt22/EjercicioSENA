@@ -15,10 +15,14 @@ var configuration = builder.Configuration
     .AddEnvironmentVariables().Build();
 
 builder.Services.AddCors(options =>
-    options.AddDefaultPolicy(config =>
-        config
-        .WithOrigins("http://localhost:4200")
-       ));
+{
+    options.AddPolicy("AllowSpecificOrigins", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod(); 
+    });
+});
 
 builder.Services.AddServices();
 
@@ -50,7 +54,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapCarter();
 
-app.UseCors();
+app.UseCors("AllowSpecificOrigins");
 
 app.UseRouting();
 

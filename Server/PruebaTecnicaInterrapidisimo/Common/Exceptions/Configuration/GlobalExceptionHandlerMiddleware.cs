@@ -39,6 +39,7 @@ public class GlobalExceptionHandlerMiddleware(RequestDelegate next, ILogger<Glob
         }
 
         ProblemDetail internaldetail = new((int)HttpStatusCode.InternalServerError, "Hubo un error interno inesperado intente mas tarde.");
+        context.Response.StatusCode = internaldetail.StatusCode;
 
         return context.Response.WriteAsync(JsonSerializer.Serialize(internaldetail));
     }

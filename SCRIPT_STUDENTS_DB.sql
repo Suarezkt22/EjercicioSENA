@@ -15,7 +15,7 @@ GO
 USE StudentsDB;
 GO
 
--- 2. Creación de tablas
+-- 2. CreaciÃ³n de tablas
 CREATE TABLE Programs (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE Students (
     CONSTRAINT FK_Students_Programs FOREIGN KEY (ProgramId) REFERENCES Programs(Id)
 );
 
--- Tablas de relación muchos-a-muchos
+-- Tablas de relaciÃ³n muchos-a-muchos
 CREATE TABLE ProgramCourses (
     ProgramId INT NOT NULL,
     CourseId INT NOT NULL,
@@ -50,7 +50,6 @@ CREATE TABLE ProgramCourses (
     CONSTRAINT FK_ProgramCourses_Programs FOREIGN KEY (ProgramId) REFERENCES Programs(Id),
     CONSTRAINT FK_ProgramCourses_Courses FOREIGN KEY (CourseId) REFERENCES Courses(Id)
 );
-
 
 CREATE TABLE StudentCourses (
     StudentId INT NOT NULL,
@@ -62,38 +61,36 @@ CREATE TABLE StudentCourses (
 
 -- 3. Insertar 5 profesores
 INSERT INTO Teachers (Name) VALUES
-('Profesor García'),
-('Profesora Martínez'),
-('Profesor Rodríguez'),
-('Profesora López'),
-('Profesor Sánchez');
+('Profesor GarcÃ­a'),
+('Profesora MartÃ­nez'),
+('Profesor RodrÃ­guez'),
+('Profesora LÃ³pez'),
+('Profesor SÃ¡nchez');
 
 -- 4. Insertar 10 materias (cursos)
 INSERT INTO Courses (Name, Credits, TeacherId) VALUES
-('Matemáticas Avanzadas', 3 , 1),
-('Literatura Contemporánea', 3, 1),
-('Física Cuántica', 3 , 2),
-('Historia del Arte', 3 , 2),
-('Programación Orientada a Objetos', 3 , 3),
-('Biología Molecular', 3 , 3),
-('Economía Internacional', 3 , 4),
-('Química Orgánica', 3 , 4),
-('Filosofía Moderna', 3 , 5),
-('Ingeniería de Software', 3 , 5);
+('MatemÃ¡ticas Avanzadas', 3, 1),
+('Literatura ContemporÃ¡nea', 3, 1),
+('FÃ­sica CuÃ¡ntica', 3, 2),
+('Historia del Arte', 3, 2),
+('ProgramaciÃ³n Orientada a Objetos', 3, 3),
+('BiologÃ­a Molecular', 3, 3),
+('EconomÃ­a Internacional', 3, 4),
+('QuÃ­mica OrgÃ¡nica', 3, 4),
+('FilosofÃ­a Moderna', 3, 5),
+('IngenierÃ­a de Software', 3, 5);
 
-
--- 6. Insertar un programa académico
+-- 5. Insertar un programa acadÃ©mico
 INSERT INTO Programs (Name, Credits) VALUES
-('Ingeniería de Sistemas', 180);
+('IngenierÃ­a de Sistemas', 180);
 
--- 7. Asociar todas las materias al programa
+-- 6. Asociar todas las materias al programa (CORREGIDO: Usando IDs 1-10)
 INSERT INTO ProgramCourses (ProgramId, CourseId) VALUES
-(1, 11), (1, 12), (1, 3), (1, 4), (1, 5),
+(1, 1), (1, 2), (1, 3), (1, 4), (1, 5),
 (1, 6), (1, 7), (1, 8), (1, 9), (1, 10);
 
 
-
--- 10. Verificación de datos insertados
+-- 9. VerificaciÃ³n de datos insertados
 SELECT 'Programas' AS Tabla, COUNT(*) AS Registros FROM Programs
 UNION ALL
 SELECT 'Profesores', COUNT(*) FROM Teachers
@@ -105,13 +102,3 @@ UNION ALL
 SELECT 'Estudiantes', COUNT(*) FROM Students
 UNION ALL
 SELECT 'Materias de Estudiantes', COUNT(*) FROM StudentCourses;
-
-USE master;
-GO
-
-ALTER DATABASE StudentsDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-GO
-
-DROP DATABASE StudentsDB;
-GO
-

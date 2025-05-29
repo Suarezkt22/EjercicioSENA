@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
 })
 export class AppComponent {
-  public title = 'Employees Service';
+  public title = 'Students Service';
 }

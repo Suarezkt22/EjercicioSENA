@@ -10,7 +10,7 @@ public class GetCoursesPerProgramEndpoint : CarterModule
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet($"{ApiTags.ApiBaseRoute}/{ApiTags.CoursesTag}/{{programId}}", async (
+        app.MapGet($"{ApiTags.ApiBaseRoute}/{ApiTags.CoursesTag}/per-program", async (
             [FromQuery] int programId,
             ISender sender) =>
         { 

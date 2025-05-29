@@ -10,7 +10,7 @@ public class DeleteStudentEndpoint : CarterModule
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapDelete($"{ApiTags.ApiBaseRoute}/{ApiTags.StudentsTag}/delete/{{StudentId}}", async (
+        app.MapDelete($"{ApiTags.ApiBaseRoute}/{ApiTags.StudentsTag}/delete", async (
             [FromQuery] int StudentId,
             ISender sender) =>
         { 

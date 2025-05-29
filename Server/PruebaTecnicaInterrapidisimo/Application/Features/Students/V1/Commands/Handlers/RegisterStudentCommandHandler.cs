@@ -6,9 +6,9 @@ using PruebaTecnicaInterrapidisimo.Domain.Contracts;
 
 namespace PruebaTecnicaInterrapidisimo.Application.Features.Students.V1.Commands.Handlers;
 
-public class RegisterStudentCommandHandler(IStudentRepository _studentRepository, IUnitOfWork _unitOfWork) : IRequestHandler<RegisterStudentCommand, Response<string>>
+public class RegisterStudentCommandHandler(IStudentRepository _studentRepository, IUnitOfWork _unitOfWork) : IRequestHandler<RegisterStudentCommand, Response<int>>
 {
-    public async Task<Response<string>> Handle(RegisterStudentCommand request, CancellationToken cancellationToken)
+    public async Task<Response<int>> Handle(RegisterStudentCommand request, CancellationToken cancellationToken)
     {
         await EnsureStudentDoesNotExist(request.Name, cancellationToken);
 
@@ -16,7 +16,7 @@ public class RegisterStudentCommandHandler(IStudentRepository _studentRepository
 
         await CreateStudent(newStudent, cancellationToken);
 
-        return new Response<string>($"El estudiante {newStudent.Name} ha sido registrado correctamente.");
+        return new Response<int>(newStudent.Id);
     }
 
     private async Task EnsureStudentDoesNotExist(string name, CancellationToken cancellationToken)

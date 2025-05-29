@@ -1,10 +1,10 @@
-using PruebaTecnicaAmaris.Common.Exceptions;
-using PruebaTecnicaAmaris.Models.Employee;
-using PruebaTecnicaAmaris.Models.Employee.Repositories;
-using PruebaTecnicaAmaris.Models.Employee.Services;
+using PruebaTecnicaInterrapidisimo.Common.Exceptions;
+using PruebaTecnicaInterrapidisimo.Models.Employee;
+using PruebaTecnicaInterrapidisimo.Models.Employee.Repositories;
+using PruebaTecnicaInterrapidisimo.Models.Employee.Services;
 using Moq;
 
-namespace PruebaTecnicaAmaris.Tests.Tests;
+namespace PruebaTecnicaInterrapidisimo.Tests.Tests;
 
 public class EmployeeServiceTests
 {

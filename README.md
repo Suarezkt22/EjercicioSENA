@@ -1,4 +1,4 @@
-# PruebaTecnicaAmaris [Employee Service]
+# PruebaTecnicaInterrapidisimo [Employee Service]
 
 Este proyecto incluye una aplicación desarrollada en **.NET** para el backend siguiendo la arquitectura de MVC y **Angular** para el frontend. A continuación, encontrarás las instrucciones necesarias para ejecutar y probar el proyecto.
 
@@ -26,7 +26,7 @@ Este proyecto incluye una aplicación desarrollada en **.NET** para el backend s
 1. **Restaurar dependencias**:
    - Navega a la carpeta del backend:
      ```bash
-     cd /Server/PruebaTecnicaAmaris
+     cd /Server/PruebaTecnicaInterrapidisimo
      ```
    - Ejecuta:
      ```bash
@@ -80,7 +80,7 @@ Este proyecto incluye una aplicación desarrollada en **.NET** para el backend s
 1. **Pruebas unitaria del backend**:
     - Navega a la carpeta del backend:
      ```bash
-     cd /Server/PruebaTecnicaAmaris.Tests
+     cd /Server/PruebaTecnicaInterrapidisimo.Tests
      ```
 
    - Ejecuta las pruebas:

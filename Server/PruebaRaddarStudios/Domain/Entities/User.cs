@@ -9,7 +9,6 @@ public class User : TEntity
     public string Password { get; set; } = string.Empty;
 
     protected User() { }
-
     
     public static User Build(int id, string email, string password)
     {

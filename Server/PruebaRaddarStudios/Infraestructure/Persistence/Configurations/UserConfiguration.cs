@@ -16,8 +16,15 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
                .HasColumnName("Id")
                .ValueGeneratedOnAdd();
 
-        builder.Property(c => c.Email);
+        builder.Property(c => c.Email)
+               .IsRequired()
+               .HasMaxLength(255);
 
-        builder.Property(c => c.Password);
+        builder.HasIndex(c => c.Email)
+               .IsUnique();
+
+        builder.Property(c => c.Password)
+               .IsRequired()
+               .HasMaxLength(128);
     }
 }

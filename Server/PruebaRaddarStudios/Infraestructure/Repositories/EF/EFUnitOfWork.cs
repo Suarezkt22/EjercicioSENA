@@ -34,9 +34,4 @@ public class EFUnitOfWork(DbWriteContext _context) : IUnitOfWork
             _disposed = true;
         }
     }
-
-    ~EFUnitOfWork()
-    {
-        Dispose(false);
-    }
 }

@@ -7,7 +7,7 @@ public class DapperUnitOfWork() : IUnitOfWork
 {
     private bool _disposed;
 
-    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+    public async Task SaveChangesAsync(CancellationToken cancellationToken)
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
         await Task.CompletedTask;
@@ -29,10 +29,5 @@ public class DapperUnitOfWork() : IUnitOfWork
             }
             _disposed = true;
         }
-    }
-
-    ~DapperUnitOfWork()
-    {
-        Dispose(false);
     }
 }

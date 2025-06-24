@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Crear Producto</h4>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                <!-- Nombre -->
+                <div class="form-group mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" id="nombre" class="form-control" [formControl]="inputs.nombre"
+                        placeholder="Ingrese el nombre del producto"
+                        [ngClass]="{ 'is-invalid': submitted && inputs.nombre.errors }" />
+                    <div *ngIf="submitted && inputs.nombre.errors" class="invalid-feedback">
+                        <small *ngIf="inputs.nombre.errors?.['required']">El nombre es obligatorio.</small>
+                    </div>
+                </div>
+
+                <!-- Descripción -->
+                <div class="form-group mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea id="descripcion" class="form-control" [formControl]="inputs.descripcion" rows="3"
+                        placeholder="Ingrese una descripción"
+                        [ngClass]="{ 'is-invalid': submitted && inputs.descripcion.errors }"></textarea>
+                    <div *ngIf="submitted && inputs.descripcion.errors" class="invalid-feedback">
+                        <small *ngIf="inputs.descripcion.errors?.['required']">La descripción es obligatoria.</small>
+                    </div>
+                </div>
+
+                <!-- Precio -->
+                <div class="form-group mb-3">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" id="precio" class="form-control" [formControl]="inputs.precio"
+                        placeholder="Ingrese el precio"
+                        [ngClass]="{ 'is-invalid': submitted && inputs.precio.errors }" />
+                    <div *ngIf="submitted && inputs.precio.errors" class="invalid-feedback">
+                        <small *ngIf="inputs.precio.errors?.['required']">El precio es obligatorio.</small>
+                        <small *ngIf="inputs.precio.errors?.['min']">El precio debe ser mayor a 0.</small>
+                    </div>
+                </div>
+
+                <!-- Stock -->
+                <div class="form-group mb-3">
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="number" id="stock" class="form-control" [formControl]="inputs.stock"
+                        placeholder="Ingrese el stock" [ngClass]="{ 'is-invalid': submitted && inputs.stock.errors }" />
+                    <div *ngIf="submitted && inputs.stock.errors" class="invalid-feedback">
+                        <small *ngIf="inputs.stock.errors?.['required']">El stock es obligatorio.</small>
+                        <small *ngIf="inputs.stock.errors?.['min']">El stock debe ser mayor o igual a 0.</small>
+                    </div>
+                </div>
+
+                <!-- Acciones -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary mb-3" [disabled]="loading">
+                        <output *ngIf="loading" class="spinner-border spinner-border-sm me-2"
+                            aria-hidden="true"></output>
+                        Crear Producto
+                    </button>
+                    <button (click)="redirectToProductsPage()" class="btn btn-secondary" [disabled]="loading">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

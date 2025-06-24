@@ -26,7 +26,7 @@ public class LoginUserCommandHandler(
 
     private async Task<User> GetUserAsync(string email, CancellationToken cancellationToken)
     {
-        return await _userRepository.GetByEmailAsync(email, cancellationToken) ?? throw new GeneralException("Credenciales incorrectas.");
+        return await _userRepository.GetByEmailAsync(email, cancellationToken) ?? throw new UnauthorizedException();
     }
 
     private async Task VerifyPasswordAsync(string savedPassword, string inputPassword, CancellationToken cancellationToken)
@@ -35,7 +35,7 @@ public class LoginUserCommandHandler(
 
         if (!valid)
         {
-            throw new UnauthorizedAccessException("Credenciales incorrectas.");
+            throw new UnauthorizedException();
         }
     }
 

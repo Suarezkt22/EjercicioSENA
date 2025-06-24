@@ -1,31 +1,16 @@
 import { Routes } from "@angular/router";
 import { AuthGuard } from "./core/guards/auth.guard";
-import { ProgressGuard } from "./core/guards/progress.guard";
-import { ApplyProgramComponent } from "./features/apply-program/apply-program.component";
-import { EnrollCoursesComponent } from "./features/enroll-courses/enroll-courses.component";
-import { RegisterComponent } from "./features/register-student/register-student.component";
-import { CourseClassmatesComponent } from "./features/course-classmates/course-classmates.component";
-
+import { GuestGuard } from "./core/guards/guest.guard";
 
 export const routes: Routes = [
-  { path: '', component: RegisterComponent },
   { 
-    path: 'apply-program', 
-    component: ApplyProgramComponent,
+    path: '', 
+    loadChildren: () => import('./features/users/users.module').then(m => m.UsersModule),
+    canActivate: [GuestGuard]
+  },
+  { 
+    path: 'products', 
+    loadChildren: () => import('./features/products/products.module').then(m => m.ProductsModule),
     canActivate: [AuthGuard],
-    data: { requiredProgress: 'register' }
   },
-  { 
-    path: 'enroll-courses', 
-    component: EnrollCoursesComponent,
-    canActivate: [AuthGuard, ProgressGuard],
-    data: { requiredProgress: 'apply-program' }
-  },
-  { 
-    path: 'classmates', 
-    component: CourseClassmatesComponent,
-    canActivate: [AuthGuard, ProgressGuard],
-    data: { requiredProgress: 'enroll-courses' }
-  },
-  { path: '**', redirectTo: '/' }
 ];

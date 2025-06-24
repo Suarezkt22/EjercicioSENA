@@ -1,31 +1,18 @@
 import { createApiClient } from "../app/core/utils/utils";
 
+const BASE_URL = "http://localhost:5270/api"; 
 
-const STUDENTS_SERVICES = {
-    STUDENTS_BASE_URL : 'http://localhost:5270/api/v1/students/',
-    PROGRAMS_BASE_URL : 'http://localhost:5270/api/v1/programs/',
-    COURSES_BASE_URL : 'http://localhost:5270/api/v1/courses/',
+const SERVICES = {
+    PRODUCTS_BASE_URL : `${BASE_URL}/productos/`,
+    USERS_BASE_URL : `${BASE_URL}/usuarios/`,
 }
 
-const STUDENTS_ENDPOINTS = {
-    APPLY_PROGRAM : "apply-program",
-    DELETE_STUDENT : "delete",
-    GET_ENROLLED_COURSES : "enrolled-courses",
-    ENROLL_COURSES : "enroll-courses",
-    GET_CLASSMATES : "classmates",
-    REGISTER_STUDENT : "register"
+const USERS_ENDPOINTS = {
+    REGISTER : "register",
+    LOGIN : "login",
 } as const
 
-const PROGRAMS_ENDPOINTS = {
-    GET_ALL_PROGRAMS : "all",
-} as const
+const USERS_API = createApiClient(SERVICES.USERS_BASE_URL, USERS_ENDPOINTS);
+const PRODUCTS_API = SERVICES.PRODUCTS_BASE_URL
 
-const COURSES_ENDPOINTS = {
-    GET_COURSES_BY_PROGRAM : "per-program"
-} as const
-
-const STUDENTS_API = createApiClient(STUDENTS_SERVICES.STUDENTS_BASE_URL, STUDENTS_ENDPOINTS);
-const PROGRAMS_API = createApiClient(STUDENTS_SERVICES.PROGRAMS_BASE_URL, PROGRAMS_ENDPOINTS);
-const COURSES_API = createApiClient(STUDENTS_SERVICES.COURSES_BASE_URL, COURSES_ENDPOINTS);
-
-export { STUDENTS_API , PROGRAMS_API, COURSES_API }
+export { PRODUCTS_API, USERS_API }

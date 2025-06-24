@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { SESSION_SERVICE, ISessionService } from '../interfaces/session-service.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthGuard {
+export class GuestGuard {
   constructor(
     @Inject(SESSION_SERVICE) private readonly sessionService: ISessionService,
     private readonly router: Router
@@ -13,9 +13,9 @@ export class AuthGuard {
 
   canActivate(): boolean {
     const hasSession = !!this.sessionService.getToken();
-    if(!hasSession) {
-      this.router.navigate(['/']);
+    if (hasSession) {
+      this.router.navigate(['/products']); 
     }
-    return hasSession;
+    return !hasSession;
   }
 }

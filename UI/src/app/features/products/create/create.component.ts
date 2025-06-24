@@ -58,8 +58,8 @@ export class CreateComponent implements OnInit {
   private async fetchCreateProduct(){
     try {
       this.loading = true;
-      await firstValueFrom(this.productService.create(this.productPayload));
-      this.toastr.success(`Producto ${this.productPayload.nombre} creado exitosamente.`);
+      const result = await firstValueFrom(this.productService.create(this.productPayload));
+      this.toastr.success(result.message);
       this.redirectToProductsPage()
     } catch (error) {
       this.toastr.error(extractErrorMessage(error));

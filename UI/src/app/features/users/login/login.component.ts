@@ -7,6 +7,7 @@ import { UserForm, UserPayload } from '../../../core/models/user.model';
 import { extractErrorMessage } from '../../../core/utils/utils';
 import { SessionService } from '../../../core/services/session.service';
 import { IUserService, USERS_SERVICE } from '../../../core/interfaces/user-service.interface';
+import { ISessionService, SESSION_SERVICE } from '../../../core/interfaces/session-service.interface';
 
 @Component({
   selector: 'app-login',
@@ -22,11 +23,13 @@ export class LoginComponent {
   constructor(
     private readonly fb: FormBuilder,
     private readonly router: Router,
-    private readonly sessionService: SessionService,
     private readonly toastr: ToastrService,
 
     @Inject(USERS_SERVICE)
     private readonly userService: IUserService,
+
+    @Inject(SESSION_SERVICE)
+    private readonly sessionService: ISessionService,
   ) { }
 
   ngOnInit(): void {

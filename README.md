@@ -33,7 +33,7 @@ Este proyecto implementa una solución basada en principios de DDD (Domain-Drive
 
 ## Instalación
 
-### Backend Server\PruebaTecnicaInterrapidisimo
+### Backend Server\PruebaRaddarStudios
 
 1. Restaura los paquetes:
 

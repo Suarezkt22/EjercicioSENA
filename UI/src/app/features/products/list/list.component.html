@@ -49,14 +49,17 @@
                 <ng-container matColumnDef="acciones">
                     <th mat-header-cell *matHeaderCellDef> Acciones </th>
                     <td mat-cell *matCellDef="let product">
+
                         <button class="btn btn-warning btn-sm me-2" (click)="onEdit(product)"
                             [disabled]="loadingProductId === product.id">Editar</button>
+
                         <button class="btn btn-danger btn-sm" (click)="onDelete(product)"
                             [disabled]="loadingProductId === product.id">
                             <output *ngIf="loadingProductId === product.id" class="spinner-border spinner-border-sm"
                                 aria-hidden="true"></output>
                             Eliminar
                         </button>
+                        
                     </td>
                 </ng-container>
 

@@ -23,3 +23,4 @@ public class GetByIdProductEndpoint : ICarterModule
         .WithTags(ApiTags.ApiProductsTag);
     }
 }
+

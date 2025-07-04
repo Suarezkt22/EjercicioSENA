@@ -3,7 +3,6 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using PruebaRaddarStudios.Domain.Contracts;
 using PruebaRaddarStudios.Infraestructure.Persistence;
-using PruebaRaddarStudios.Infraestructure.Repositories;
 using PruebaRaddarStudios.Infraestructure.Repositories.Dapper;
 
 using PruebaRaddarStudios.Infraestructure.Services;

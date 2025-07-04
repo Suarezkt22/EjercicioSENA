@@ -23,3 +23,4 @@ public class UpdateProductEndpoint : ICarterModule
         .WithTags(ApiTags.ApiProductsTag);
     }
 }
+

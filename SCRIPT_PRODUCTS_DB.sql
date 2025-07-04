@@ -30,5 +30,4 @@ CREATE TABLE Users (
     Email NVARCHAR(200) NOT NULL,
     Password NVARCHAR(200) NOT NULL
 );
-
 -- docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrong!Password" -p 1433:1433 --name sqlserver -d mcr.microsoft.com/mssql/server:2022-latest

@@ -22,3 +22,4 @@ public class DeleteeProductEndpoint : ICarterModule
         .WithTags(ApiTags.ApiProductsTag);
     }
 }
+

@@ -22,3 +22,4 @@ public class CreateProductEndpoint : ICarterModule
         .WithTags(ApiTags.ApiProductsTag);
     }
 }
+

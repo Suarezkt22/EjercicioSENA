@@ -39,7 +39,7 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new()
     {
-        Title = "PruebaRaddarStudios API",
+        Title = "PruebaGitSENA API",
         Version = "v1"
     });
 

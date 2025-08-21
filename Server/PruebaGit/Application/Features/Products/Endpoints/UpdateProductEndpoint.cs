@@ -19,7 +19,7 @@ public class UpdateProductEndpoint : ICarterModule
             var result = await sender.Send(new UpdateProductCommand(productId, request));
             return Results.Ok(result);
         })
-        .RequireAuthorization()
+        //.RequireAuthorization()
         .WithTags(ApiTags.ApiProductsTag);
     }
 }

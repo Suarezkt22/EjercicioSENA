@@ -17,7 +17,7 @@ public class GetAllProductsEndpoint : ICarterModule
             var result = await sender.Send(new GetAllProductsQuery());
             return Results.Ok(result);
         })
-        .RequireAuthorization()
+        //.RequireAuthorization()
         .WithTags(ApiTags.ApiProductsTag);
     }
 }

@@ -18,7 +18,7 @@ public class CreateProductEndpoint : ICarterModule
             var result = await sender.Send(new CreateProductCommand(request));
             return Results.Ok(result);
         })
-        .RequireAuthorization()
+        //.RequireAuthorization()
         .WithTags(ApiTags.ApiProductsTag);
     }
 }

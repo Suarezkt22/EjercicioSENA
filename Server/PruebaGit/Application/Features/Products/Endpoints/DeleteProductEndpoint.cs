@@ -18,7 +18,7 @@ public class DeleteeProductEndpoint : ICarterModule
             var result = await sender.Send(new DeleteProductCommand(productId));
             return Results.Ok(result);
         })
-        .RequireAuthorization()
+        //.RequireAuthorization()
         .WithTags(ApiTags.ApiProductsTag);
     }
 }

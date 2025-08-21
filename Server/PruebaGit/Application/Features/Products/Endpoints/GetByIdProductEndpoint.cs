@@ -19,7 +19,7 @@ public class GetByIdProductEndpoint : ICarterModule
             var result = await sender.Send(new GetByIdProductQuery(productId));
             return Results.Ok(result);
         })
-        .RequireAuthorization()
+        //.RequireAuthorization()
         .WithTags(ApiTags.ApiProductsTag);
     }
 }

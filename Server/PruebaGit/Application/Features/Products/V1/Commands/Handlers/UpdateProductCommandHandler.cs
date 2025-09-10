@@ -27,6 +27,15 @@ public class UpdateProductCommandHandler(
     {
         var (name, description, price, stock) = updateRequest;
 
+        if (string.IsNullOrWhiteSpace(name))
+            throw new GeneralException("El nombre del producto es obligatorio.");
+
+        if (price <= 0)
+            throw new GeneralException("El precio debe ser mayor a 0.");
+
+        if (stock < 0)
+            throw new GeneralException("El stock no puede ser negativo.");
+
         product.Update(name, description, price, stock);
     }
 

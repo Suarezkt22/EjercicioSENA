@@ -1,5 +1,6 @@
 using MediatR;
 using PruebaRaddarStudios.Application.Features.Products.V1.DTOs;
+using PruebaRaddarStudios.Common.Exceptions;
 using PruebaRaddarStudios.Common.Wrappers;
 using PruebaRaddarStudios.Domain.Contracts;
 using PruebaRaddarStudios.Domain.Entities;
@@ -23,6 +24,15 @@ public class CreateProductCommandHandler(
     private static Product MapToDomain(CreateProductRequest productRequest)
     {
         var (nombre, descripcion, precio, stock) = productRequest;
+
+        if (string.IsNullOrWhiteSpace(nombre))
+            throw new GeneralException("El nombre del producto es obligatorio.");
+
+        if (precio <= 0)
+            throw new GeneralException("El precio debe ser mayor a 0.");
+
+        if (stock < 0)
+            throw new GeneralException("El stock no puede ser negativo.");
 
         return Product.Create(nombre, descripcion, precio, stock);
     }

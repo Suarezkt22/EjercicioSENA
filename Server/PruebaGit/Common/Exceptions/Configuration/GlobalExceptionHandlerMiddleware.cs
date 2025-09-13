@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 
-namespace PruebaRaddarStudios.Common.Exceptions.Configuration;
+namespace GitEjercicioSENA.Common.Exceptions.Configuration;
 
 
 

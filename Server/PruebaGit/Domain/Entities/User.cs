@@ -1,41 +1,42 @@
-using PruebaRaddarStudios.Common.Abstract;
-using PruebaRaddarStudios.Domain.DTOs;
+using GitEjercicioSENA.Common.Abstract;
+using GitEjercicioSENA.Domain.DTOs;
 
-namespace PruebaRaddarStudios.Domain.Entities;
-
-public class User : TEntity
+namespace GitEjercicioSENA.Domain.Entities
 {
-    public string Email { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
+    public class User : TEntity
+    {
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
-    protected User() { }
+        protected User() { }
     
-    public static User Build(int id, string email, string password)
-    {
-        return new User
+        public static User Build(int id, string email, string password)
         {
-            Id = id,
-            Email = email,
-            Password = password
-        };
-    }
+            return new User
+            {
+                Id = id,
+                Email = email,
+                Password = password
+            };
+        }
 
-    public static User Create(string email, string password)
-    {
-        return new User
+        public static User Create(string email, string password)
         {
-            Email = email,
-            Password = password
-        };
-    }
+            return new User
+            {
+                Email = email,
+                Password = password
+            };
+        }
 
-    public void UpdateSecuredPassword(string securedPassword)
-    {
-        Password = securedPassword;
-    }
+        public void UpdateSecuredPassword(string securedPassword)
+        {
+            Password = securedPassword;
+        }
 
-    public UserDataDto RetrieveData()
-    {
-        return new UserDataDto(Id, Email);
+        public UserDataDto RetrieveData()
+        {
+            return new UserDataDto(Id, Email);
+        }
     }
 }

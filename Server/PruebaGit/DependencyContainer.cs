@@ -1,13 +1,13 @@
 ﻿using Carter;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using PruebaRaddarStudios.Domain.Contracts;
-using PruebaRaddarStudios.Infraestructure.Persistence;
-using PruebaRaddarStudios.Infraestructure.Repositories.Dapper;
+using GitEjercicioSENA.Domain.Contracts;
+using GitEjercicioSENA.Infraestructure.Persistence;
+using GitEjercicioSENA.Infraestructure.Repositories.Dapper;
 
-using PruebaRaddarStudios.Infraestructure.Services;
+using GitEjercicioSENA.Infraestructure.Services;
 
-namespace PruebaRaddarStudios;
+namespace GitEjercicioSENA;
 
 public static class DependencyContainer
 {

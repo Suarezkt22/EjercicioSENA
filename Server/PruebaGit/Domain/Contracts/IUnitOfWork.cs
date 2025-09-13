@@ -1,4 +1,4 @@
-namespace PruebaRaddarStudios.Domain.Contracts;
+namespace GitEjercicioSENA.Domain.Contracts;
 
 public interface IUnitOfWork : IDisposable
 {

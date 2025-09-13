@@ -1,7 +1,7 @@
-using PruebaRaddarStudios.Common.Abstract;
-using PruebaRaddarStudios.Common.Exceptions;
+using GitEjercicioSENA.Common.Abstract;
+using GitEjercicioSENA.Common.Exceptions;
 
-namespace PruebaRaddarStudios.Domain.Entities.ValueObjects;
+namespace GitEjercicioSENA.Domain.Entities.ValueObjects;
 
 public class Precio : ValueObject<decimal>
 {

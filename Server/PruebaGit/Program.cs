@@ -2,12 +2,12 @@ using Carter;
 using Spectre.Console;
 using Color = Spectre.Console.Color;
 using DotNetEnv;
-using PruebaRaddarStudios.Common.Exceptions.Configuration;
-using PruebaRaddarStudios.Infraestructure.Persistence;
+using GitEjercicioSENA.Common.Exceptions.Configuration;
+using GitEjercicioSENA.Infraestructure.Persistence;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using PruebaRaddarStudios;
+using GitEjercicioSENA;
 
 var builder = WebApplication.CreateBuilder(args);
 

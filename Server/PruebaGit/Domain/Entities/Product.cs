@@ -1,7 +1,7 @@
-using PruebaRaddarStudios.Common.Abstract;
-using PruebaRaddarStudios.Domain.Entities.ValueObjects;
+using GitEjercicioSENA.Common.Abstract;
+using GitEjercicioSENA.Domain.Entities.ValueObjects;
 
-namespace PruebaRaddarStudios.Domain.Entities;
+namespace GitEjercicioSENA.Domain.Entities;
 
 public class Product : TEntity
 {

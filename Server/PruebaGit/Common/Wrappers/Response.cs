@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace PruebaRaddarStudios.Common.Wrappers;
+namespace GitEjercicioSENA.Common.Wrappers;
 
 public class Response<T>
 {

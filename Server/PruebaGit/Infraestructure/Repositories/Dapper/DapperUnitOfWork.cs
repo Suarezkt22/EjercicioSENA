@@ -1,7 +1,7 @@
 using System.Data;
-using PruebaRaddarStudios.Domain.Contracts;
+using GitEjercicioSENA.Domain.Contracts;
 
-namespace PruebaRaddarStudios.Infraestructure.Repositories.Dapper;
+namespace GitEjercicioSENA.Infraestructure.Repositories.Dapper;
 
 public class DapperUnitOfWork() : IUnitOfWork
 {

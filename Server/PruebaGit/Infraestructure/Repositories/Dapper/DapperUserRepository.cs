@@ -1,11 +1,11 @@
 using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using PruebaRaddarStudios.Domain.Contracts;
-using PruebaRaddarStudios.Domain.Entities;
-using PruebaRaddarStudios.Domain.Entities.ValueObjects;
+using GitEjercicioSENA.Domain.Contracts;
+using GitEjercicioSENA.Domain.Entities;
+using GitEjercicioSENA.Domain.Entities.ValueObjects;
 
-namespace PruebaRaddarStudios.Infraestructure.Repositories.Dapper;
+namespace GitEjercicioSENA.Infraestructure.Repositories.Dapper;
 
 public class DapperUserRepository(SqlConnection _connection) : IUserRepository
 {

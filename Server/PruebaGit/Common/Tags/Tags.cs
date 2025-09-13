@@ -1,4 +1,4 @@
-﻿namespace PruebaRaddarStudios.Common.Tags;
+﻿namespace GitEjercicioSENA.Common.Tags;
 
 public static class ApiTags
 {

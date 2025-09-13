@@ -1,4 +1,4 @@
-namespace PruebaRaddarStudios.Infraestructure.Persistence;
+namespace GitEjercicioSENA.Infraestructure.Persistence;
 
 public class AppSettings
 {

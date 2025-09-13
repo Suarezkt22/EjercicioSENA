@@ -1,11 +1,11 @@
 using Carter;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PruebaRaddarStudios.Application.Features.Products.V1.Commands;
-using PruebaRaddarStudios.Application.Features.Products.V1.DTOs;
-using PruebaRaddarStudios.Common.Tags;
+using GitEjercicioSENA.Application.Features.Products.V1.Commands;
+using GitEjercicioSENA.Application.Features.Products.V1.DTOs;
+using GitEjercicioSENA.Common.Tags;
 
-namespace PruebaRaddarStudios.Application.Features.Products.Endpoints;
+namespace GitEjercicioSENA.Application.Features.Products.Endpoints;
 
 public class DeleteeProductEndpoint : ICarterModule
 {

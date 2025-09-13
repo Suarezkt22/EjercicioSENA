@@ -1,6 +1,6 @@
-using PruebaRaddarStudios.Domain.Entities;
+using GitEjercicioSENA.Domain.Entities;
 
-namespace PruebaRaddarStudios.Domain.Contracts;
+namespace GitEjercicioSENA.Domain.Contracts;
 
 public interface IUserRepository
 {

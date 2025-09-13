@@ -1,7 +1,7 @@
-using PruebaRaddarStudios.Domain.DTOs;
-using PruebaRaddarStudios.Domain.Entities;
+using GitEjercicioSENA.Domain.DTOs;
+using GitEjercicioSENA.Domain.Entities;
 
-namespace PruebaRaddarStudios.Domain.Contracts;
+namespace GitEjercicioSENA.Domain.Contracts;
 
 public interface ITokenService
 {

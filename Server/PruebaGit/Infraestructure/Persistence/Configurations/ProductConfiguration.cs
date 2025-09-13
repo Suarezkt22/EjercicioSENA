@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PruebaRaddarStudios.Domain.Entities;
-using PruebaRaddarStudios.Domain.Entities.ValueObjects;
+using GitEjercicioSENA.Domain.Entities;
+using GitEjercicioSENA.Domain.Entities.ValueObjects;
 
-namespace PruebaRaddarStudios.Infraestructure.Persistence.Configurations;
+namespace GitEjercicioSENA.Infraestructure.Persistence.Configurations;
 
 public class ProductConfiguration : IEntityTypeConfiguration<Product>
 {

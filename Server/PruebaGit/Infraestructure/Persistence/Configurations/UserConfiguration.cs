@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PruebaRaddarStudios.Domain.Entities;
+using GitEjercicioSENA.Domain.Entities;
 
-namespace PruebaRaddarStudios.Infraestructure.Persistence.Configurations;
+namespace GitEjercicioSENA.Infraestructure.Persistence.Configurations;
 
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {

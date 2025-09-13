@@ -1,4 +1,4 @@
-namespace PruebaRaddarStudios.Common.Abstract;
+namespace GitEjercicioSENA.Common.Abstract;
 
 public abstract class TEntity
 {

@@ -1,8 +1,8 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using PruebaRaddarStudios.Domain.Entities;
+using GitEjercicioSENA.Domain.Entities;
 
-namespace PruebaRaddarStudios.Infraestructure.Persistence;
+namespace GitEjercicioSENA.Infraestructure.Persistence;
 
 public class DbWriteContext(DbContextOptions<DbWriteContext> options) : DbContext(options)
 {

@@ -1,11 +1,11 @@
 using MediatR;
-using PruebaRaddarStudios.Application.Features.Products.V1.DTOs;
-using PruebaRaddarStudios.Common.Exceptions;
-using PruebaRaddarStudios.Common.Wrappers;
-using PruebaRaddarStudios.Domain.Contracts;
-using PruebaRaddarStudios.Domain.Entities;
+using GitEjercicioSENA.Application.Features.Products.V1.DTOs;
+using GitEjercicioSENA.Common.Exceptions;
+using GitEjercicioSENA.Common.Wrappers;
+using GitEjercicioSENA.Domain.Contracts;
+using GitEjercicioSENA.Domain.Entities;
 
-namespace PruebaRaddarStudios.Application.Features.Products.V1.Commands.Handlers;
+namespace GitEjercicioSENA.Application.Features.Products.V1.Commands.Handlers;
 
 public class DeleteProductCommandHandler(
     IProductRepository _productRepository,

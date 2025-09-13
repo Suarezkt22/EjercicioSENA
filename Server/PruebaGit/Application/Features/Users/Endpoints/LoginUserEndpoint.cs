@@ -1,14 +1,14 @@
 using Carter;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PruebaRaddarStudios.Application.Features.Products.V1.Commands;
-using PruebaRaddarStudios.Application.Features.Products.V1.DTOs;
-using PruebaRaddarStudios.Application.Features.Products.V1.Queries;
-using PruebaRaddarStudios.Application.Features.Users.V1.Commands;
-using PruebaRaddarStudios.Application.Features.Users.V1.DTOs;
-using PruebaRaddarStudios.Common.Tags;
+using GitEjercicioSENA.Application.Features.Products.V1.Commands;
+using GitEjercicioSENA.Application.Features.Products.V1.DTOs;
+using GitEjercicioSENA.Application.Features.Products.V1.Queries;
+using GitEjercicioSENA.Application.Features.Users.V1.Commands;
+using GitEjercicioSENA.Application.Features.Users.V1.DTOs;
+using GitEjercicioSENA.Common.Tags;
 
-namespace PruebaRaddarStudios.Application.Features.Users.Endpoints;
+namespace GitEjercicioSENA.Application.Features.Users.Endpoints;
 
 public class LoginUserEndpoint : ICarterModule
 {

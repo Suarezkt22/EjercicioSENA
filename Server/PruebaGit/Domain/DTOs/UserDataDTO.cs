@@ -1,3 +1,3 @@
-namespace PruebaRaddarStudios.Domain.DTOs;
+namespace GitEjercicioSENA.Domain.DTOs;
 
 public record struct UserDataDto(int Id,string Email);

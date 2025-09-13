@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace PruebaRaddarStudios.Common.Exceptions.Configuration;
+namespace GitEjercicioSENA.Common.Exceptions.Configuration;
 
 public class CustomException(string message, HttpStatusCode code) : Exception(message)
 {

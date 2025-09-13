@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using PruebaRaddarStudios.Domain.Contracts;
-using PruebaRaddarStudios.Infraestructure.Persistence;
+using GitEjercicioSENA.Domain.Contracts;
+using GitEjercicioSENA.Infraestructure.Persistence;
 using System;
 using System.Threading.Tasks;
 
-namespace PruebaRaddarStudios.Infraestructure.Repositories.EF;
+namespace GitEjercicioSENA.Infraestructure.Repositories.EF;
 
 public class EFUnitOfWork(DbWriteContext _context) : IUnitOfWork
 {

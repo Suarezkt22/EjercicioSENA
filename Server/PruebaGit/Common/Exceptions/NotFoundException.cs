@@ -1,7 +1,7 @@
 ﻿using System.Net;
-using PruebaRaddarStudios.Common.Exceptions.Configuration;
+using GitEjercicioSENA.Common.Exceptions.Configuration;
 
-namespace PruebaRaddarStudios.Common.Exceptions;
+namespace GitEjercicioSENA.Common.Exceptions;
 
 public class NotFoundException(string message) : CustomException(message, HttpStatusCode.NotFound)
 {

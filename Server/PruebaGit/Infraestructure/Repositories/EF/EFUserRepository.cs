@@ -1,11 +1,11 @@
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PruebaRaddarStudios.Domain.Contracts;
-using PruebaRaddarStudios.Domain.Entities;
-using PruebaRaddarStudios.Infraestructure.Persistence;
+using GitEjercicioSENA.Domain.Contracts;
+using GitEjercicioSENA.Domain.Entities;
+using GitEjercicioSENA.Infraestructure.Persistence;
 
-namespace PruebaRaddarStudios.Infraestructure.Repositories.EF;
+namespace GitEjercicioSENA.Infraestructure.Repositories.EF;
 
 public class EFUserRepository(DbWriteContext _writeContext, DbReadContext _readContext) : IUserRepository
 {

@@ -3,10 +3,10 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using PruebaRaddarStudios.Domain.Contracts;
-using PruebaRaddarStudios.Domain.DTOs;
+using GitEjercicioSENA.Domain.Contracts;
+using GitEjercicioSENA.Domain.DTOs;
 
-namespace PruebaRaddarStudios.Infraestructure.Services;
+namespace GitEjercicioSENA.Infraestructure.Services;
 
 public class TokenService(IConfiguration _configuration) : ITokenService
 {

@@ -1,7 +1,7 @@
 using Hasher = BCrypt.Net;
-using PruebaRaddarStudios.Domain.Contracts;
+using GitEjercicioSENA.Domain.Contracts;
 
-namespace PruebaRaddarStudios.Infraestructure.Services;
+namespace GitEjercicioSENA.Infraestructure.Services;
 
 public class PasswordService : IPasswordService
 {

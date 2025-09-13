@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace PruebaRaddarStudios.Infraestructure.Persistence;
+namespace GitEjercicioSENA.Infraestructure.Persistence;
 
 public static class DbContextOptionSetup
 {

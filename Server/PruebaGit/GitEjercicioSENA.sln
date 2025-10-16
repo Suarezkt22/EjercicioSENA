@@ -3,7 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaRaddarStudios", "PruebaRaddarStudios.csproj", "{61281B43-4E88-4BDC-A071-FC2B1208519E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitEjercicioSENA", "GitEjercicioSENA.csproj", "{F8D3B059-1654-4F1F-ABA5-1C3646C6AF37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +16,10 @@ Global
 		{61281B43-4E88-4BDC-A071-FC2B1208519E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61281B43-4E88-4BDC-A071-FC2B1208519E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61281B43-4E88-4BDC-A071-FC2B1208519E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D3B059-1654-4F1F-ABA5-1C3646C6AF37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D3B059-1654-4F1F-ABA5-1C3646C6AF37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D3B059-1654-4F1F-ABA5-1C3646C6AF37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D3B059-1654-4F1F-ABA5-1C3646C6AF37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

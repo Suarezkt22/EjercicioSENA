@@ -15,6 +15,17 @@ public class RegisterUserCommandHandler(
 {
     public async Task<Response<string>> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
     {
+        var request = command.Request;
+
+        if (string.IsNullOrWhiteSpace(request.Email))
+            throw new GeneralException("El correo es obligatorio.");
+
+        if (string.IsNullOrWhiteSpace(request.Password))
+            throw new GeneralException("La contraseña es obligatoria.");
+
+        if (string.IsNullOrWhiteSpace(request.Email) || string.IsNullOrWhiteSpace(request.Password))
+            throw new GeneralException("El correo y la contraseña son obligatorios.");
+
         var userToCreate = MapToDomain(command.Request);
 
         await EnsureEmailNotRegisteredAsync(userToCreate.Email, cancellationToken);

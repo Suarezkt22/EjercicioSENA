@@ -15,6 +15,17 @@ public class LoginUserCommandHandler(
 {
     public async Task<Response<LoginUserResponse>> Handle(LoginUserCommand command, CancellationToken cancellationToken)
     {
+        var request = command.Request;
+
+        if (string.IsNullOrWhiteSpace(request.Email))
+            throw new GeneralException("Debe ingresar un correo electrónico.");
+
+        if (string.IsNullOrWhiteSpace(request.Password))
+            throw new GeneralException("Debe ingresar una contraseña.");
+
+        if (string.IsNullOrWhiteSpace(request.Email) || string.IsNullOrWhiteSpace(request.Password))
+            throw new GeneralException("El correo y la contraseña no pueden estar vacíos.");
+
         var user = await GetUserAsync(command.Request.Email, cancellationToken);
 
         await VerifyPasswordAsync(user.Password, command.Request.Password, cancellationToken);

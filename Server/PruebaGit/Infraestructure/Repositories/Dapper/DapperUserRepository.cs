@@ -1,13 +1,11 @@
-using System.Data;
 using Dapper;
-using Microsoft.Data.SqlClient;
+using Microsoft.Data.Sqlite;
 using GitEjercicioSENA.Domain.Contracts;
 using GitEjercicioSENA.Domain.Entities;
-using GitEjercicioSENA.Domain.Entities.ValueObjects;
 
 namespace GitEjercicioSENA.Infraestructure.Repositories.Dapper;
 
-public class DapperUserRepository(SqlConnection _connection) : IUserRepository
+public class DapperUserRepository(SqliteConnection _connection) : IUserRepository
 {
     public async Task CreateAsync(User user, CancellationToken cancellationToken)
     {
@@ -15,13 +13,11 @@ public class DapperUserRepository(SqlConnection _connection) : IUserRepository
             INSERT INTO Users (Email, Password) 
             VALUES (@Email, @Password);";
 
-        var parameters = new
+        await _connection.ExecuteAsync(sql, new
         {
             user.Email,
             user.Password
-        };
-
-        await _connection.ExecuteAsync(sql, parameters);
+        });
     }
 
     public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)
@@ -33,10 +29,7 @@ public class DapperUserRepository(SqlConnection _connection) : IUserRepository
 
         var result = await _connection.QueryFirstOrDefaultAsync(sql, new { Email = email });
 
-        if (result == null)
-        {
-            return null;
-        }
+        if (result == null) return null;
 
         return User.Build(
             id: result.Id,

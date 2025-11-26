@@ -8,7 +8,6 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using GitEjercicioSENA;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +34,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddServices();
 builder.Services.AddEndpointsApiExplorer();
 
-// Configuración Swagger
+// Configuracion Swagger
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new()
@@ -71,32 +70,23 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Configuración de SQLite
-var connectionString = "Data Source=database.db";
+
+// Configuración de la conexión a la base de datos
+var connectionString = configuration.GetValue<string>("DBCONNECTIONSTRING");
 builder.Services.Configure<AppSettings>(appSettings =>
 {
     appSettings.DbConnectionString = connectionString!;
 });
 
 builder.Services.AddDbContext<DbReadContext>(options =>
-    options.UseSqlite(connectionString));
+    DbContextOptionSetup.ConfigureReadOptions(options, connectionString));
 
 builder.Services.AddDbContext<DbWriteContext>(options =>
-    options.UseSqlite(connectionString));
+    DbContextOptionSetup.ConfigureWriteOptions(options, connectionString));
 
-// Configuración JWT
+// Configuración de JWT
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-
-// Intentar leer desde appsettings.json y env vars
-var jwtKey = jwtSettings["Key"]
-             ?? Environment.GetEnvironmentVariable("JWT__KEY")
-             ?? Environment.GetEnvironmentVariable("Jwt__Key");
-
-// Evitar null en producción
-if (string.IsNullOrWhiteSpace(jwtKey))
-    jwtKey = "fallback_key_123_change_me";
-
-var key = Encoding.UTF8.GetBytes(jwtKey);
+var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
 
 builder.Services.AddAuthentication(options =>
 {
@@ -122,30 +112,22 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// 🔥 EJECUTAR MIGRACIONES AUTOMÁTICAMENTE (ESSENCIAL PARA RAILWAY)
-using (var scope = app.Services.CreateAsyncScope())
-{
-    var dbRead = scope.ServiceProvider.GetRequiredService<DbReadContext>();
-    var dbWrite = scope.ServiceProvider.GetRequiredService<DbWriteContext>();
-
-    await dbRead.Database.MigrateAsync();
-    await dbWrite.Database.MigrateAsync();
-}
-
 app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Swagger siempre activo (Railway = Production)
-app.UseSwagger();
-app.UseSwaggerUI(options =>
+if (app.Environment.IsDevelopment())
 {
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Prueba API");
-    options.RoutePrefix = "swagger";
-});
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Prueba API");
+        options.RoutePrefix = string.Empty;
+    });
+}
 
-// app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.MapCarter();
 

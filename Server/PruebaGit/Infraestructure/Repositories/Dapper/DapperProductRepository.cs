@@ -1,13 +1,12 @@
 using System.Data;
 using Dapper;
-using Microsoft.Data.Sqlite;
+using Microsoft.Data.SqlClient;
 using GitEjercicioSENA.Domain.Contracts;
 using GitEjercicioSENA.Domain.Entities;
-using GitEjercicioSENA.Domain.Entities.ValueObjects;
 
 namespace GitEjercicioSENA.Infraestructure.Repositories.Dapper;
 
-public class DapperProductRepository(SqliteConnection _connection) : IProductRepository
+public class DapperProductRepository(SqlConnection _connection) : IProductRepository
 {
     public async Task CreateAsync(Product product, CancellationToken cancellationToken)
     {
@@ -38,9 +37,7 @@ public class DapperProductRepository(SqliteConnection _connection) : IProductRep
         const string sql = "SELECT * FROM Products;";
         var rows = await _connection.QueryAsync<(int Id, string Nombre, string Descripcion, decimal Precio, int Stock, DateTime FechaCreacion)>(sql);
 
-        return rows
-            .Select(row => Product.Build(row.Id, row.Nombre, row.Descripcion, row.Precio, row.Stock, row.FechaCreacion))
-            .ToList();
+        return [.. rows.Select(row => Product.Build(row.Id, row.Nombre, row.Descripcion, row.Precio, row.Stock, row.FechaCreacion))];
     }
 
     public async Task<Product?> GetByIdAsync(int productId, CancellationToken cancellationToken, bool editable = false)
@@ -49,7 +46,8 @@ public class DapperProductRepository(SqliteConnection _connection) : IProductRep
         var row = await _connection.QueryFirstOrDefaultAsync<(int Id, string Nombre, string Descripcion, decimal Precio, int Stock, DateTime FechaCreacion)>
             (sql, new { Id = productId });
 
-        if (row.Equals(default)) return null;
+        if (row.Equals(default))
+            return null;
 
         return Product.Build(row.Id, row.Nombre, row.Descripcion, row.Precio, row.Stock, row.FechaCreacion);
     }

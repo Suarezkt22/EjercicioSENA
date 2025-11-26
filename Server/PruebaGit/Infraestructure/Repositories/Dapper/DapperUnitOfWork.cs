@@ -1,4 +1,3 @@
-using System.Data;
 using GitEjercicioSENA.Domain.Contracts;
 
 namespace GitEjercicioSENA.Infraestructure.Repositories.Dapper;

@@ -122,7 +122,7 @@ app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "Prueba API");
-    options.RoutePrefix = string.Empty;  // Swagger en la raíz
+    options.RoutePrefix = "swagger";
 });
 
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();

@@ -8,6 +8,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using GitEjercicioSENA;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,17 +73,17 @@ builder.Services.AddSwaggerGen(options =>
 
 
 // Configuración de la conexión a la base de datos
-var connectionString = configuration.GetValue<string>("DBCONNECTIONSTRING");
+var connectionString = "Data Source=database.db";
 builder.Services.Configure<AppSettings>(appSettings =>
 {
     appSettings.DbConnectionString = connectionString!;
 });
 
 builder.Services.AddDbContext<DbReadContext>(options =>
-    DbContextOptionSetup.ConfigureReadOptions(options, connectionString));
+    options.UseSqlite("Data Source=database.db"));
 
 builder.Services.AddDbContext<DbWriteContext>(options =>
-    DbContextOptionSetup.ConfigureWriteOptions(options, connectionString));
+    options.UseSqlite("Data Source=database.db"));
 
 // Configuración de JWT
 var jwtSettings = builder.Configuration.GetSection("Jwt");

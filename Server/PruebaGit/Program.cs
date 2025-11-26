@@ -86,7 +86,17 @@ builder.Services.AddDbContext<DbWriteContext>(options =>
 
 // Configuración JWT
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
+
+// Intentar leer desde appsettings.json y env vars
+var jwtKey = jwtSettings["Key"]
+             ?? Environment.GetEnvironmentVariable("JWT__KEY")
+             ?? Environment.GetEnvironmentVariable("Jwt__Key");
+
+// Evitar null en producción
+if (string.IsNullOrWhiteSpace(jwtKey))
+    jwtKey = "fallback_key_123_change_me";
+
+var key = Encoding.UTF8.GetBytes(jwtKey);
 
 builder.Services.AddAuthentication(options =>
 {

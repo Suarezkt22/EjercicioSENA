@@ -3,6 +3,7 @@ using System;
 using GitEjercicioSENA.Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -15,17 +16,23 @@ namespace GitEjercicioSENA.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.14");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.14")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("GitEjercicioSENA.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
+                        .HasColumnType("int")
                         .HasColumnName("Id");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<DateTime>("FechaCreacion")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -36,18 +43,20 @@ namespace GitEjercicioSENA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
+                        .HasColumnType("int")
                         .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(128)");
 
                     b.HasKey("Id");
 
@@ -62,12 +71,12 @@ namespace GitEjercicioSENA.Migrations
                     b.OwnsOne("GitEjercicioSENA.Domain.Entities.ValueObjects.Descripcion", "Descripcion", b1 =>
                         {
                             b1.Property<int>("ProductId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
                                 .HasMaxLength(500)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("nvarchar(500)")
                                 .HasColumnName("Descripcion");
 
                             b1.HasKey("ProductId");
@@ -81,12 +90,12 @@ namespace GitEjercicioSENA.Migrations
                     b.OwnsOne("GitEjercicioSENA.Domain.Entities.ValueObjects.Nombre", "Nombre", b1 =>
                         {
                             b1.Property<int>("ProductId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
                                 .HasMaxLength(100)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("nvarchar(100)")
                                 .HasColumnName("Nombre");
 
                             b1.HasKey("ProductId");
@@ -100,11 +109,11 @@ namespace GitEjercicioSENA.Migrations
                     b.OwnsOne("GitEjercicioSENA.Domain.Entities.ValueObjects.Precio", "Precio", b1 =>
                         {
                             b1.Property<int>("ProductId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<decimal>("Value")
                                 .HasPrecision(18, 2)
-                                .HasColumnType("TEXT")
+                                .HasColumnType("decimal(18,2)")
                                 .HasColumnName("Precio");
 
                             b1.HasKey("ProductId");
@@ -118,10 +127,10 @@ namespace GitEjercicioSENA.Migrations
                     b.OwnsOne("GitEjercicioSENA.Domain.Entities.ValueObjects.Stock", "Stock", b1 =>
                         {
                             b1.Property<int>("ProductId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<int>("Value")
-                                .HasColumnType("INTEGER")
+                                .HasColumnType("int")
                                 .HasColumnName("Stock");
 
                             b1.HasKey("ProductId");

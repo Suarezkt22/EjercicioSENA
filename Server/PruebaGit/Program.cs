@@ -35,7 +35,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddServices();
 builder.Services.AddEndpointsApiExplorer();
 
-// Configuracion Swagger
+// Configuración Swagger
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new()
@@ -71,8 +71,7 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-
-// Configuración de la conexión a la base de datos
+// Configuración de SQLite
 var connectionString = "Data Source=database.db";
 builder.Services.Configure<AppSettings>(appSettings =>
 {
@@ -80,12 +79,12 @@ builder.Services.Configure<AppSettings>(appSettings =>
 });
 
 builder.Services.AddDbContext<DbReadContext>(options =>
-    options.UseSqlite("Data Source=database.db"));
+    options.UseSqlite(connectionString));
 
 builder.Services.AddDbContext<DbWriteContext>(options =>
-    options.UseSqlite("Data Source=database.db"));
+    options.UseSqlite(connectionString));
 
-// Configuración de JWT
+// Configuración JWT
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
 
@@ -113,11 +112,22 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+// 🔥 EJECUTAR MIGRACIONES AUTOMÁTICAMENTE (ESSENCIAL PARA RAILWAY)
+using (var scope = app.Services.CreateAsyncScope())
+{
+    var dbRead = scope.ServiceProvider.GetRequiredService<DbReadContext>();
+    var dbWrite = scope.ServiceProvider.GetRequiredService<DbWriteContext>();
+
+    await dbRead.Database.MigrateAsync();
+    await dbWrite.Database.MigrateAsync();
+}
+
 app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Swagger siempre activo (Railway = Production)
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {

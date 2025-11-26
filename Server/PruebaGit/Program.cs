@@ -145,7 +145,7 @@ app.UseSwaggerUI(options =>
     options.RoutePrefix = "swagger";
 });
 
-app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+// app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.MapCarter();
 
